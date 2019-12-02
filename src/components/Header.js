@@ -14,6 +14,7 @@ export const Header = () => (
                 </li>
                 <li className="list-inline-item"><Link to="/sales" replace>Sales</Link></li>
                 <li className="list-inline-item"><Link to="/summaries" replace>Summaries</Link></li>
+                <li className="list-inline-item"><Link to="/payments" replace>Tax Payments</Link></li>
             </ul>
             
             <ul className="list-inline">

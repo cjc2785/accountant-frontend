@@ -7,6 +7,7 @@ import { Header } from './header.js'
 import { Home } from './home.js'
 import ProductList from './ProductList'
 import Summary from './Summary'
+import Payment from './Payment'
 
 const shoes = [{
     productId: 1,
@@ -40,6 +41,9 @@ const App = () => (
                     products={shoes}/>)} />
             <Route path='/summaries'
                 render={() => (<Summary/>)} />
+            <Route path='/payments' component={Payment}>
+
+            </Route>
         </Switch>
     </div>
 )
