@@ -12,8 +12,8 @@ export const Header = () => (
                         <img width="170px" height="140px" src="images/logo.png" />
                     </Link>
                 </li>
-                <li className="list-inline-item"><Link to="/reports" replace>Sales</Link></li>
-                <li className="list-inline-item"><Link to="/reports" replace>Summaries</Link></li>
+                <li className="list-inline-item"><Link to="/sales" replace>Sales</Link></li>
+                <li className="list-inline-item"><Link to="/summaries" replace>Summaries</Link></li>
             </ul>
             
             <ul className="list-inline">

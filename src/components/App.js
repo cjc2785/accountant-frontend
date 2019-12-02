@@ -6,6 +6,7 @@ import { Switch, Route } from 'react-router-dom'
 import { Header } from './header.js'
 import { Home } from './home.js'
 import ProductList from './ProductList'
+import Summary from './Summary'
 
 const shoes = [{
     productId: 1,
@@ -37,9 +38,8 @@ const App = () => (
             <Route path='/sales'
                 render={() => (<ProductList category='Sales'
                     products={shoes}/>)} />
-            <Route path='/sales'
-                render={() => (<ProductList category='Summaries'
-                    products={shoes}/>)} />
+            <Route path='/summaries'
+                render={() => (<Summary/>)} />
         </Switch>
     </div>
 )
