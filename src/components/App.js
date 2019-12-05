@@ -8,6 +8,7 @@ import { Home } from './home.js'
 import ProductList from './ProductList'
 import Summary from './Summary'
 import Payment from './Payment'
+import Login from './Login'
 
 const shoes = [{
     productId: 1,
@@ -41,9 +42,8 @@ const App = () => (
                     products={shoes}/>)} />
             <Route path='/summaries'
                 render={() => (<Summary/>)} />
-            <Route path='/payments' component={Payment}>
-
-            </Route>
+            <Route path='/payments' component={Payment}/>
+            <Route path='/login' component={Login}/>
         </Switch>
     </div>
 )

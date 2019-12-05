@@ -11,18 +11,18 @@ const ProductList = ({
         <div className='container'>
             <div>
                 <div className='dropdown'>
-                    <button class="btn btn-secondary dropdown-toggle" type="button">
+                    <button className="btn btn-secondary dropdown-toggle" type="button">
                         Shoes
                     </button>
                 </div>
                 <div className='d-flex pt-4 pb-4'>
                     <div>
                         <p>Start Date</p>
-                        <input value='2019-01-01' />
+                        <input defaultValue='2019-01-01' />
                     </div>
                     <div className='pl-5'>
                         <p>End Date</p>
-                        <input value='2019-02-01' />
+                        <input defaultValue='2019-02-01' />
                     </div>
                 </div>
             </div>

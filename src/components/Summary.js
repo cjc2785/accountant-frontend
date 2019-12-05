@@ -3,16 +3,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+const summaryStyle = {
+    maxWidth: '400px'
+}
+
 const Summary = () => (
-    <div className='container-fluid'>
+    <div className='container-fluid' style={summaryStyle}>
         <div className='d-flex pt-4 pb-4'>
             <div>
                 <p>Start Date</p>
-                <input value='2019-01-01' />
+                <input defaultValue='2019-01-01' />
             </div>
             <div className='pl-5'>
                 <p>End Date</p>
-                <input value='2019-02-01' />
+                <input defaultValue='2019-02-01' />
             </div>
         </div>
         <div>
