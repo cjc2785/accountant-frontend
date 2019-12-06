@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import { DateRangePicker } from 'react-dates'
 
-export default ({startDate, endDate, onDatesChange}) => {
+export default ({startDate, endDate, onDatesChange, disabled = false}) => {
 
     const [
         state,
@@ -27,6 +27,7 @@ export default ({startDate, endDate, onDatesChange}) => {
             startDateId="startDate"
             endDateId="endDate"
             focusedInput={state.focused}
+            disabled={disabled}
             isOutsideRange={() => null}
             onDatesChange={onDatesChange}
             onFocusChange={handleFocusChange}/>
