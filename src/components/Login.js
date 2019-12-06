@@ -1,13 +1,12 @@
 "use strict"
 
 import React from 'react'
-import PropTypes from 'prop-types'
 
 const formStyle = {
     maxWidth: '400px'
 }
 
-const Login = () => (
+export default () => (
     <div>
         <form  className='container-fluid' style={formStyle}>
             <div className="form-group">
@@ -22,9 +21,3 @@ const Login = () => (
         </form>
     </div>
 )
-
-Login.propTypes = {
-
-}
-
-export default Login

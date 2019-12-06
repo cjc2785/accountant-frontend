@@ -1,13 +1,12 @@
 "use strict"
 
 import React from 'react'
-import PropTypes from 'prop-types'
 
 const summaryStyle = {
     maxWidth: '400px'
 }
 
-const Summary = () => (
+export default () => (
     <div className='container-fluid' style={summaryStyle}>
         <div className='d-flex pt-4 pb-4'>
             <div>
@@ -31,9 +30,3 @@ const Summary = () => (
         </div>
     </div>
 )
-
-Summary.propTypes = {
-
-}
-
-export default Summary

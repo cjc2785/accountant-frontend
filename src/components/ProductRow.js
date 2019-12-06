@@ -1,7 +1,6 @@
 "use strict"
 
 import React from 'react'
-import PropTypes from 'prop-types'
 
 const SizeMenu = () => (
     <div className="input-group mb-3">
@@ -13,7 +12,7 @@ const SizeMenu = () => (
     </div>
 )
 
-const ProductRow = ({ product }) => (
+export default ({ product }) => (
     <tr key={product.productId}>
         <td> {product.productId} </td>
         <td> {product.brand} </td>
@@ -24,9 +23,3 @@ const ProductRow = ({ product }) => (
         <td> {product.sales} </td>
     </tr>
 )
-
-ProductRow.propTypes = {
-    product: PropTypes.object.isRequired
-}
-
-export default ProductRow
