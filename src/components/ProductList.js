@@ -1,29 +1,70 @@
 "use strict"
 
-import React from 'react'
+import React, { useState } from 'react'
+import Select from 'react-select'
 import PropTypes from 'prop-types'
 import ProductRow from './ProductRow'
+import { DateRangePicker } from 'react-dates'
+import moment from 'moment'
 
-const ProductList = ({
-    category = '',
-    products = []
-}) => (
+
+const options = [
+    { value: 'shoes', label: 'Shoes' },
+    { value: 'pants', label: 'Pants' },
+    { value: 'shirts', label: 'Shirts' }
+]
+
+const selectContainerStyle = {
+    maxWidth: '400px'
+}
+
+const ProductList = ({ category = '', products = [] }) => {
+
+    const [
+        state,
+        setState
+    ] = useState({
+        startDate: moment().subtract(2, "year"),
+        endDate: moment(),
+        focused: null
+    })
+
+
+    const handleDateChange = ({ startDate, endDate }) => {
+
+        setState(state => ({
+            ...state,
+            startDate,
+            endDate
+        }))
+    }
+
+    const handleFocusChange = focused => {
+        
+        setState(state => ({ 
+            ...state,
+            focused 
+        }))
+    }
+
+
+    return (
         <div className='container'>
             <div>
-                <div className='dropdown'>
-                    <button className="btn btn-secondary dropdown-toggle" type="button">
-                        Shoes
-                    </button>
+                <div style={selectContainerStyle}>
+                    <Select defaultValue={options[0]} 
+                        options={options} />
                 </div>
-                <div className='d-flex pt-4 pb-4'>
-                    <div>
-                        <p>Start Date</p>
-                        <input defaultValue='2019-01-01' />
-                    </div>
-                    <div className='pl-5'>
-                        <p>End Date</p>
-                        <input defaultValue='2019-02-01' />
-                    </div>
+                <div className='pt-4 pb-4'>
+                    <DateRangePicker startDate={state.startDate}
+                        endDate={state.endDate}
+                        startDateId="startDate"
+                        endDateId="endDate"
+                        focusedInput={state.focused}
+                        isOutsideRange={() => null}
+                        onDatesChange={handleDateChange}
+                        onFocusChange={handleFocusChange}
+                    />
                 </div>
             </div>
             <table className="table">
@@ -45,6 +86,7 @@ const ProductList = ({
             </table>
         </div>
     )
+}
 
 ProductList.propTypes = {
     category: PropTypes.string,
