@@ -1,13 +1,11 @@
-"use strict"
-
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 
-import Header from './header.js'
-import Home from './home.js'
+import Header from './Header.js'
+import Home from './Home.js'
 import SalesPageContainer from './SalesPageContainer'
 import SummaryPageContainer from './SummaryPageContainer'
-import Summary from './Summary'
+
 import Payment from './Payment'
 import Login from './Login'
 

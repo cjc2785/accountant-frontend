@@ -1,6 +1,4 @@
-"use strict"
-
-import React, { useState } from 'react'
+import React from 'react'
 import ProductRow from './ProductRow'
 
 export default ({ products }) => (

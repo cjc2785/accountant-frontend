@@ -1,5 +1,3 @@
-"use strict"
-
 import React, { useState } from 'react'
 import { DateRangePicker } from 'react-dates'
 

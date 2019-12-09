@@ -1,5 +1,3 @@
-"use strict"
-
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { login } from '../creators'

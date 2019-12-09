@@ -1,8 +1,5 @@
-"use strict"
-
 import React from 'react'
 import Select from 'react-select'
-import moment from 'moment'
 import DatePicker from './DatePicker'
 
 const options = [

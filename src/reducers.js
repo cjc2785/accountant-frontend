@@ -101,7 +101,8 @@ const summaryQueries = (state = {}, action) => {
                 }
             }
         }
-        case 'read_report_error': {
+
+        case 'read_summary_error': {
 
             const {
                 queryId
