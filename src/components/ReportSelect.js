@@ -1,54 +1,49 @@
 "use strict"
 
-import React, { useState } from 'react'
+import React from 'react'
 import Select from 'react-select'
 import moment from 'moment'
 import DatePicker from './DatePicker'
 
 const options = [
-    { value: 'shoes', label: 'Shoes' },
-    { value: 'pants', label: 'Pants' },
-    { value: 'shirts', label: 'Shirts' }
+    { value: 'shoes', label: 'shoes' },
+    { value: 'pants', label: 'pants' },
+    { value: 'shirts', label: 'shirts' }
 ]
+
+const values = {
+    shoes: options[0],
+    pants: options[1],
+    shirts: options[2]
+}
 
 const selectContainerStyle = {
     maxWidth: '400px'
 }
 
-export default ({ category, ...props }) => {
-
-    const [
-        state,
-        setState
-    ] = useState({
-        editing: false
-    })
-
-    const handleToggleEditing = () => setState(
-        ({ editing }) => ({
-            editing: !editing
-        })
-    )
-
-    return (
-        <div className='pb-5' style={selectContainerStyle}>
+export default ({ category, editing, status, onCategoryChange, onToggleEditing, ...props }) => (
+    <div className='pb-5' style={selectContainerStyle}>
+        <div className='mb-3'>
+            <button type="button"
+                disabled={status === 'loading'}
+                className="btn btn-primary"
+                onClick={onToggleEditing}>
+                {editing ? 'Done' : 'Edit'}
+            </button>
+            {status === 'loading' && <div className="ml-3 spinner-border"/>}
+            {status === 'error' && <span className="ml-3 badge badge-danger">Error fetching reports</span>}
+        </div>
+        <div className='border p-3' style={selectContainerStyle}>
             <div className='pb-3'>
-                <button type="button"
-                    className="btn btn-primary"
-                    onClick={handleToggleEditing}>
-                        {state.editing ? 'Done' : 'Edit'}
-                </button>
+                <Select
+                    isDisabled={!editing}
+                    value={values[category]}
+                    onChange={({ value }) => onCategoryChange(value)}
+                    options={options} />
             </div>
-            <div className='border p-3' style={selectContainerStyle}>
-                <div className='pb-3'>
-                    <Select defaultValue={options[0]}
-                        isDisabled={!state.editing}
-                        options={options} />
-                </div>
-                <div className=''>
-                    <DatePicker {...props} disabled={!state.editing} />
-                </div>
+            <div className=''>
+                <DatePicker {...props} disabled={!editing} />
             </div>
         </div>
-    )
-}
+    </div>
+)

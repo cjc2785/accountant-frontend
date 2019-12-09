@@ -1,56 +1,56 @@
 "use strict"
 
-import React, { useState } from 'react'
-import PropTypes from 'prop-types'
-import moment from 'moment'
+import React from 'react'
+import { connect } from 'react-redux'
 import ReportSelect from './ReportSelect'
 import ProductReportTable from './ProductReportTable'
+import { getReportQuery } from '../selectors'
 
-const shoes = [{
-    productId: 1,
-    brand: 'Nike',
-    name: 'Air Jordan',
-    quantity: 10,
-    sales: 100,
-}, {
-    productId: 2,
-    brand: 'Adidas',
-    name: 'Running Shoes',
-    quantity: 20,
-    sales: 200
-}, {
-    productId: 3,
-    brand: 'Nike',
-    name: 'Running Shoes',
-    quantity: 5,
-    sales: 100
-}]
+const SalesPage = ({
+    category,
+    startDate,
+    endDate,
+    editing,
+    status,
+    reports,
+    onCategoryChange,
+    onDatesChange,
+    onToggleEditing
+}) => (
+    <div className='container'>
+        <ReportSelect category={category}
+            status={status}
+            startDate={startDate}
+            endDate={endDate}
+            editing={editing}
+            onCategoryChange={onCategoryChange}
+            onDatesChange={onDatesChange}
+            onToggleEditing={onToggleEditing}/>
+        <ProductReportTable
+            products={reports} />
+    </div>
+)
 
-export default () => {
+const defaultReports = []
 
-    const [
-        state,
-        setState
-    ] = useState({
-        category: 'shoes',
-        products: shoes,
-        startDate: moment().subtract(1, "year"),
-        endDate: moment()
-    })
+export default connect(
+    (state, props) => {
 
-    const handleDatesChange = ({ startDate, endDate }) => {
+        const {
+            reportFilter
+        } = props
 
-        setState(state => ({
-            ...state,
-            startDate,
-            endDate
-        }))
+        const query = reportFilter ? getReportQuery(state, reportFilter, {}) : {}
+
+        const {
+            status = 'idle',
+            data: reports = defaultReports
+        } = query
+
+        return {
+            ...props,
+            status,
+            reports
+        }
     }
-
-    return (
-        <div className='container'>
-            <ReportSelect {...state} onDatesChange={handleDatesChange}/>
-            <ProductReportTable products={state.products} />
-        </div>
-    )
-}
+)(SalesPage)

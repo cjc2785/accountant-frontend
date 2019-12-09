@@ -8,6 +8,7 @@ var babelify = require("babelify");
 var source = require('vinyl-source-stream');
 var concat = require('gulp-concat');
 var lint = require('gulp-eslint');
+var proxy = require('http-proxy-middleware');
 
 var config = {
 	port: 9090,
@@ -33,6 +34,14 @@ gulp.task('connect', function() {
 		root: ['dist'],
 		port: config.port,
 		base: config.devBaseUrl,
+		middleware: function(connect, opt) {
+            return [
+                proxy('/api', {
+                    target: 'http://localhost:8080',
+                    changeOrigin:true
+                })
+            ]
+        },
 		livereload: true
 	});
 });
