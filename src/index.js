@@ -11,6 +11,7 @@ import ReactDom from 'react-dom'
 import { HashRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import store from './store'
+import './index.css'
 
 
 import App from './components/App.js'

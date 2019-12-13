@@ -58,7 +58,7 @@ const LoginForm = ({ status, login }) => {
 
 
     return (
-        <div>
+        <div className='mt-5'>
             <form className='container-fluid'
                 style={formStyle}>
                 <div className="form-group">

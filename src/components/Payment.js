@@ -5,7 +5,7 @@ const formStyle = {
 }
 
 export default () => (
-    <div>
+    <div className='mt-5'>
         <form  className='container-fluid' style={formStyle}>
             <div className="form-group">
                 <label htmlFor="inputPayment">Tax Payment Amount</label>

@@ -16,8 +16,8 @@ const SummaryPage = ({
     onDatesChange,
     onToggleEditing
 }) => (
-    <div className='container-fluid' style={summaryStyle}>
-        <div className='d-flex pt-4 pb-4'>
+    <div className='container-fluid mt-5' style={summaryStyle}>
+        <div className='d-flex mb-4'>
             <SummarySelect status={status}
                 startDate={startDate}
                 endDate={endDate}

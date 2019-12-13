@@ -15,7 +15,7 @@ const SalesPage = ({
     onDatesChange,
     onToggleEditing
 }) => (
-    <div className='container'>
+    <div className='container mt-5'>
         <ReportSelect category={category}
             status={status}
             startDate={startDate}
