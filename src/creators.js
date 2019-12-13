@@ -1,7 +1,5 @@
-import axios from 'axios'
+import axios from './axiosInstance'
 import { getReportQueryId, getSummaryQueryId } from './utility'
-
-const base = '/api'
 
 export const readReport = ({
     category,
@@ -23,7 +21,7 @@ export const readReport = ({
     })
 
     return axios
-        .get(`${base}/accountant/reports`, {
+        .get('accountant/reports', {
             params: {
                 category,
                 start: startDate,
@@ -80,7 +78,7 @@ export const readSummary = ({
     })
 
     return axios
-        .get(`${base}/accountant/summaries`, {
+        .get('accountant/summaries', {
             params: {
                 start: startDate,
                 end: endDate
@@ -127,7 +125,7 @@ export const login = ({
     })
 
     return axios
-        .post(`${base}/login`, {
+        .post('login', {
             email,
             password
         })
