@@ -8,6 +8,7 @@ var babelify = require("babelify");
 var source = require('vinyl-source-stream');
 var concat = require('gulp-concat');
 var lint = require('gulp-eslint');
+var proxy = require('http-proxy-middleware');
 
 var config = {
 	port: 9090,
@@ -19,6 +20,7 @@ var config = {
 		css: [
       		'node_modules/bootstrap/dist/css/bootstrap.min.css',
 			  'node_modules/bootstrap/dist/css/bootstrap-theme.min.css',
+			  'node_modules/react-dates/lib/css/_datepicker.css',
 			  './src/**/*.css'
     	],
 		dist: './dist',
@@ -32,6 +34,14 @@ gulp.task('connect', function() {
 		root: ['dist'],
 		port: config.port,
 		base: config.devBaseUrl,
+		middleware: function(connect, opt) {
+            return [
+                proxy('/api', {
+                    target: 'http://localhost:8080',
+                    changeOrigin:true
+                })
+            ]
+        },
 		livereload: true
 	});
 });
@@ -49,7 +59,7 @@ gulp.task('html', function() {
 
 gulp.task('js', function() {
 	browserify(config.paths.mainJs)
-		.transform(babelify, {presets: ["es2015", "react"]})
+		.transform(babelify, {presets: ["es2015", "react", "stage-2"]})
 		.bundle()
 		.on('error', console.error.bind(console))
 		.pipe(source('bundle.js'))
