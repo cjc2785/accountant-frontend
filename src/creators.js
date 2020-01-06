@@ -135,9 +135,9 @@ export const login = ({
                 type: 'login_success'
             })
         })
-        .catch(e => {
+        .catch(({response}) => {
 
-            const status = e.response.status === 401 ? 
+            const status = response && response.status === 401 ? 
                 'unauthenticated' : 'error'
 
             dispatch({
