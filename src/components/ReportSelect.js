@@ -38,7 +38,7 @@ export default ({ category, editing, status, onCategoryChange, onToggleEditing, 
                     onChange={({ value }) => onCategoryChange(value)}
                     options={options} />
             </div>
-            <div className=''>
+            <div>
                 <DatePicker {...props} disabled={!editing} />
             </div>
         </div>

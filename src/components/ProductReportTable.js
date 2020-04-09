@@ -13,7 +13,8 @@ export default ({ products }) => (
             </tr>
         </thead>
         <tbody>
-            {products.map(product => (
+            {products.sort((a,b) => a.productId - b.productId)
+                .map(product => (
                 <ProductRow key={product.productId}
                     product={product} />
             ))}
