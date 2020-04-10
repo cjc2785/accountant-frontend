@@ -7,11 +7,11 @@ phases:
     commands:
       - echo 'GENERATE_SOURCEMAP=false' >> env.production.local
       - echo "REACT_APP_API_BASE_URL=$API_ENDPOINT" >> env.production.local
+      - npm install --production
   build:
     commands:
       - npm run build
       - CI=true npm run test
-      - npm install --production
       - aws s3 sync build s3://$WEBSITE_BUCKET --delete
       - aws cloudfront create-invalidation --distribution-id $CLOUDFRONT --paths '/*'
 artifacts:
