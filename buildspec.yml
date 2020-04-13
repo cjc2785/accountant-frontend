@@ -5,8 +5,8 @@ phases:
       nodejs: 12
   pre_build:
     commands:
-      - echo 'GENERATE_SOURCEMAP=false' >> env.production.local
-      - echo "REACT_APP_API_BASE_URL=$API_ENDPOINT" >> env.production.local
+      - echo 'GENERATE_SOURCEMAP=false' >> .env.production.local
+      - echo "REACT_APP_API_BASE_URL=$API_ENDPOINT" >> .env.production.local
       - npm install --production
   build:
     commands:
